@@ -1,0 +1,13 @@
+# Compilados Java
+*.class
+
+# Pastas de IDEs
+.vscode/
+.idea/
+*.iml
+bin/
+build/
+dist/
+
+# Logs e temporários
+*.log
