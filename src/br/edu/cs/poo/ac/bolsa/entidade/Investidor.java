@@ -1,11 +1,12 @@
-package br.edu.cs.poo.ac.bolsa.entidades;
+package br.edu.cs.poo.ac.bolsa.entidade;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
+import java.io.Serializable;
 
-public class Investidor {
-    
+public class Investidor implements Serializable {
+
     private String nome;
     private Endereco endereco;
     private LocalDate dataCriacao;
