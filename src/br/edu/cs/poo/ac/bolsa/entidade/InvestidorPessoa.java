@@ -3,12 +3,14 @@ package br.edu.cs.poo.ac.bolsa.entidade;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class InvestidorPessoa extends Investidor{
+public class InvestidorPessoa extends Investidor {
     
     private String cpf;
     private double renda;
     private FaixaRenda faixaRenda;
 
+    public InvestidorPessoa(){}
+    
     public InvestidorPessoa(String nome, Contatos contatos, LocalDate dataNascimento, BigDecimal bonus, Endereco endereco, String cpf, double renda, FaixaRenda faixaRenda)
     {
         super(nome, contatos, dataNascimento, bonus, endereco);

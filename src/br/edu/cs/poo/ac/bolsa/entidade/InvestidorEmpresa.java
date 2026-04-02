@@ -7,6 +7,8 @@ public class InvestidorEmpresa extends Investidor {
     private String cnpj;
     private double faturamento;
 
+    public InvestidorEmpresa(){}
+   
     public InvestidorEmpresa(String nome, Contatos contatos, LocalDate dataAbertura, BigDecimal bonus, Endereco endereco, String cnpj, double faturamento)
     {
         super(nome, contatos, dataAbertura, bonus, endereco);

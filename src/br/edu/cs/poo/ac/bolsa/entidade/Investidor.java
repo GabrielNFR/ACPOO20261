@@ -10,9 +10,11 @@ public class Investidor implements Serializable {
     private String nome;
     private Endereco endereco;
     private LocalDate dataCriacao;
-    private BigDecimal bonus;
+    private BigDecimal bonus = BigDecimal.ZERO;
     private Contatos contatos;
 
+    public Investidor(){}
+    
     public Investidor(String nome, Contatos contatos, LocalDate dataCriacao, BigDecimal bonus, Endereco endereco) {
         this.nome = nome;
         this.contatos = contatos;
