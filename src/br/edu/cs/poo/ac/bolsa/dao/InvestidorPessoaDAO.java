@@ -2,8 +2,8 @@ package br.edu.cs.poo.ac.bolsa.dao;
 
 import br.edu.cs.poo.ac.bolsa.entidade.InvestidorPessoa;
 
-public class InvestidorAtivoDAO extends DAOGenerico{
-    public InvestidorAtivoDAO()
+public class InvestidorPessoaDAO extends DAOGenerico{
+    public InvestidorPessoaDAO()
     {
         inicializarCadastro(InvestidorPessoa.class);
     }
