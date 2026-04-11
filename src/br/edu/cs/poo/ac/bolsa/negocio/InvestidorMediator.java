@@ -5,8 +5,8 @@ import java.time.LocalDate;
 import java.math.BigDecimal;
 import java.security.MessageDigest;
 
-import br.edu.cs.poo.ac.bolsa.dao.InvestidorEmpresaDAO;
-import br.edu.cs.poo.ac.bolsa.dao.InvestidorPessoaDAO;
+import br.edu.cs.poo.ac.bolsa.dao.DAOInvestidorEmpresa;
+import br.edu.cs.poo.ac.bolsa.dao.DAOInvestidorPessoa;
 import br.edu.cs.poo.ac.bolsa.entidade.Endereco;
 import br.edu.cs.poo.ac.bolsa.entidade.InvestidorEmpresa;
 import br.edu.cs.poo.ac.bolsa.entidade.InvestidorPessoa;
@@ -16,8 +16,8 @@ import br.edu.cs.poo.ac.bolsa.util.ResultadoValidacao;
 import br.edu.cs.poo.ac.bolsa.util.ValidadorCpfCnpj;
 
 public class InvestidorMediator {
-    private InvestidorEmpresaDAO daoInvEmp = new InvestidorEmpresaDAO();
-    private InvestidorPessoaDAO daoInvPes = new InvestidorPessoaDAO();
+    private DAOInvestidorEmpresa daoInvEmp = new DAOInvestidorEmpresa();
+    private DAOInvestidorPessoa daoInvPes = new DAOInvestidorPessoa();
 
     private MensagensValidacao validarEndereco(Endereco endereco)
     {

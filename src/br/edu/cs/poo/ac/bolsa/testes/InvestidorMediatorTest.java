@@ -6,8 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import br.edu.cesarschool.next.oo.persistenciaobjetos.CadastroObjetos;
-import br.edu.cs.poo.ac.bolsa.dao.InvestidorEmpresaDAO;
-import br.edu.cs.poo.ac.bolsa.dao.InvestidorPessoaDAO;
+import br.edu.cs.poo.ac.bolsa.dao.DAOInvestidorEmpresa;
+import br.edu.cs.poo.ac.bolsa.dao.DAOInvestidorPessoa;
 import br.edu.cs.poo.ac.bolsa.entidade.Contatos;
 import br.edu.cs.poo.ac.bolsa.entidade.Endereco;
 import br.edu.cs.poo.ac.bolsa.entidade.InvestidorEmpresa;
