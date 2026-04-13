@@ -18,7 +18,7 @@ public class TelaPais {
 
         do {
             mostrarMenu();
-            opcao = lerInteiro("Escolha uma opção: ");
+            opcao = lerInteiro("Escolha uma opcao: ");
 
             switch (opcao) {
                 case 1 -> incluir();
@@ -26,7 +26,7 @@ public class TelaPais {
                 case 3 -> excluir();
                 case 4 -> buscar();
                 case 0 -> System.out.println("Encerrando...");
-                default -> System.out.println("Opção inválida");
+                default -> System.out.println("Opcao invalida");
             }
 
             System.out.println("\nPressione ENTER para continuar...");
@@ -37,89 +37,89 @@ public class TelaPais {
 
     private static void mostrarMenu() {
         System.out.println("====================================");
-        System.out.println("        CRUD DE PAÍSES");
+        System.out.println("        CRUD DE PAISES");
         System.out.println("====================================");
-        System.out.println("1 - Incluir País");
-        System.out.println("2 - Alterar País");
-        System.out.println("3 - Excluir País");
-        System.out.println("4 - Buscar País");
+        System.out.println("1 - Incluir Pais");
+        System.out.println("2 - Alterar Pais");
+        System.out.println("3 - Excluir Pais");
+        System.out.println("4 - Buscar Pais");
         System.out.println("0 - Sair");
         System.out.println("====================================");
     }
 
     // ---------------------------------------------------------
-    //  OPERAÇÕES DO CRUD
+    //  OPERACOES DO CRUD
     // ---------------------------------------------------------
 
     private static void incluir() {
-        System.out.println("\n--- INCLUSÃO DE PAÍS ---");
+        System.out.println("\n--- INCLUSAO DE PAIS ---");
 
         Pais pais = lerDadosPais();
 
         String ret = mediator.incluir(pais);
 
         if (ret == null) {
-            System.out.println("País incluído com sucesso!");
+            System.out.println("Pais incluido com sucesso!");
         } else {
             System.out.println("Erro: " + ret);
         }
     }
 
     private static void alterar() {
-        System.out.println("\n--- ALTERAÇÃO DE PAÍS ---");
+        System.out.println("\n--- ALTERACAO DE PAIS ---");
 
         Pais pais = lerDadosPais();
 
         String ret = mediator.alterar(pais);
 
         if (ret == null) {
-            System.out.println("País alterado com sucesso!");
+            System.out.println("Pais alterado com sucesso!");
         } else {
             System.out.println("Erro: " + ret);
         }
     }
 
     private static void excluir() {
-        System.out.println("\n--- EXCLUSÃO DE PAÍS ---");
+        System.out.println("\n--- EXCLUSAO DE PAIS ---");
 
-        String sigla = lerTexto("Informe a sigla do país: ").toUpperCase();
+        String sigla = lerTexto("Informe a sigla do pais: ").toUpperCase();
 
         String ret = mediator.excluir(sigla);
 
         if (ret == null) {
-            System.out.println("País excluído com sucesso!");
+            System.out.println("Pais excluido com sucesso!");
         } else {
             System.out.println("Erro: " + ret);
         }
     }
 
     private static void buscar() {
-        System.out.println("\n--- BUSCA DE PAÍS ---");
+        System.out.println("\n--- BUSCA DE PAIS ---");
 
-        String sigla = lerTexto("Informe a sigla do país: ").toUpperCase();
+        String sigla = lerTexto("Informe a sigla do pais: ").toUpperCase();
 
         Pais pais = mediator.buscar(sigla);
 
         if (pais == null) {
-            System.out.println("País não encontrado.");
+            System.out.println("Pais nao encontrado.");
         } else {
-            System.out.println("\n--- DADOS DO PAÍS ---");
+            System.out.println("\n--- DADOS DO PAIS ---");
             System.out.println("Sigla: " + pais.getSigla());
             System.out.println("Nome: " + pais.getNome());
-            System.out.println("Data de Fundação: " +
-                    (pais.getDataFundacao() != null ? pais.getDataFundacao().format(fmt) : "Não informada"));
+            System.out.println("Data de Fundacao: " +
+                    (pais.getDataFundacao() != null ? pais.getDataFundacao().format(fmt) : "Nao informada"));
         }
     }
 
     // ---------------------------------------------------------
-    //  MÉTODOS AUXILIARES
+    //  METODOS AUXILIARES
     // ---------------------------------------------------------
 
     private static Pais lerDadosPais() {
         String sigla = lerTexto("Sigla (2 letras): ").toUpperCase();
         String nome = lerTexto("Nome: ");
 
-        String dataStr = lerTexto("Data de fundação (dd/MM/yyyy) ou ENTER para ignorar: ");
+        String dataStr = lerTexto("Data de fundacao (dd/MM/yyyy) ou ENTER para ignorar: ");
 
         LocalDate dataFundacao = null;
         if (!dataStr.isBlank()) {
@@ -140,7 +140,7 @@ public class TelaPais {
                 System.out.print(msg);
                 return Integer.parseInt(sc.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("Valor inválido, tente novamente.");
+                System.out.println("Valor invalido, tente novamente.");
             }
         }
     }
