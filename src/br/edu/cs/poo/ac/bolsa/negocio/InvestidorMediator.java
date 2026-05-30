@@ -10,8 +10,12 @@ import br.edu.cs.poo.ac.bolsa.dao.DAOInvestidorPessoa;
 import br.edu.cs.poo.ac.bolsa.entidade.Endereco;
 import br.edu.cs.poo.ac.bolsa.entidade.InvestidorEmpresa;
 import br.edu.cs.poo.ac.bolsa.entidade.InvestidorPessoa;
+import br.edu.cs.poo.ac.bolsa.entidade.OrdenacaoInvestidorPessoa;
+import br.edu.cs.poo.ac.bolsa.entidade.ComparadorInvestidorPessoaRenda;
 import br.edu.cs.poo.ac.bolsa.entidade.Contatos;
+import br.edu.cs.poo.ac.bolsa.util.ComparadorGenerico;
 import br.edu.cs.poo.ac.bolsa.util.MensagensValidacao;
+import br.edu.cs.poo.ac.bolsa.util.Ordenador;
 import br.edu.cs.poo.ac.bolsa.util.ResultadoValidacao;
 import br.edu.cs.poo.ac.bolsa.util.ValidadorCpfCnpj;
 
@@ -351,5 +355,21 @@ public class InvestidorMediator {
         }
 
         return daoInvPes.buscar(cpf);
+    }
+
+    public InvestidorPessoa[] consultarInvestidorPessoa(OrdenacaoInvestidorPessoa criterio) {
+        InvestidorPessoa[] investidores = daoInvPes.consultarTodos();
+
+        if (investidores == null) {
+            return null;
+        }
+
+        if (criterio == OrdenacaoInvestidorPessoa.NOME) {
+            Ordenador.ordenar(investidores, new ComparadorGenerico());
+        } else if (criterio == OrdenacaoInvestidorPessoa.RENDA) {
+            Ordenador.ordenar(investidores, new ComparadorInvestidorPessoaRenda());
+        }
+
+        return investidores;
     }
 }

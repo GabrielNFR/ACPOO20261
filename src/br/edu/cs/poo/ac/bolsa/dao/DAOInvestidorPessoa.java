@@ -1,5 +1,7 @@
 package br.edu.cs.poo.ac.bolsa.dao;
 
+import java.io.Serializable;
+
 import br.edu.cs.poo.ac.bolsa.entidade.InvestidorPessoa;
 
 public class DAOInvestidorPessoa extends DAOGenerico{
@@ -33,5 +35,21 @@ public class DAOInvestidorPessoa extends DAOGenerico{
 		} else {
 			return false;
 		}
+	}
+
+	public boolean incluirInvestidorPessoa(InvestidorPessoa investidorPessoa) {
+		return incluir(investidorPessoa);
+	}
+
+	public InvestidorPessoa[] consultarTodos() {
+		Serializable[] ret = cadastro.buscarTodos();
+		if (ret == null) {
+			return null;
+		}
+		InvestidorPessoa[] lista = new InvestidorPessoa[ret.length];
+		for (int i = 0; i < ret.length; i++) {
+			lista[i] = (InvestidorPessoa)ret[i];
+		}
+		return lista;
 	}
 }
