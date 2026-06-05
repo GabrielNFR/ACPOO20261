@@ -23,4 +23,8 @@ public class MensagensValidacao {
 		}
 		return arr;
 	}
+
+	public boolean contem(String mensagem) {
+    return mensagens.contains(mensagem);
+}
 }

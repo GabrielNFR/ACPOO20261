@@ -8,6 +8,7 @@ import java.security.MessageDigest;
 import br.edu.cs.poo.ac.bolsa.dao.DAOInvestidorEmpresa;
 import br.edu.cs.poo.ac.bolsa.dao.DAOInvestidorPessoa;
 import br.edu.cs.poo.ac.bolsa.entidade.Endereco;
+import br.edu.cs.poo.ac.bolsa.entidade.Investidor;
 import br.edu.cs.poo.ac.bolsa.entidade.InvestidorEmpresa;
 import br.edu.cs.poo.ac.bolsa.entidade.InvestidorPessoa;
 import br.edu.cs.poo.ac.bolsa.entidade.OrdenacaoInvestidorPessoa;
@@ -345,6 +346,17 @@ public class InvestidorMediator {
         return msgs;
     }
 
+    public MensagensValidacao alterarInvestidor(Investidor investidor) {
+        if (investidor instanceof InvestidorEmpresa) {
+            return alterarInvestidorEmpresa((InvestidorEmpresa)investidor);
+        } else if (investidor instanceof InvestidorPessoa) {
+            return alterarInvestidorPessoa((InvestidorPessoa)investidor);
+        }
+        MensagensValidacao msgs = new MensagensValidacao();
+        msgs.adicionar("Tipo de investidor inválido.");
+        return msgs;
+    }
+
     public InvestidorPessoa buscarInvestidorPessoa(String cpf)
     {
         ResultadoValidacao resultadoCpf = ValidadorCpfCnpj.validarCpf(cpf); 
@@ -371,5 +383,17 @@ public class InvestidorMediator {
         }
 
         return investidores;
+    }
+
+    public Investidor buscarInvestidor(String identificador) {
+        if (ValidadorCpfCnpj.validarCpf(identificador) == null) {
+            return buscarInvestidorPessoa(identificador);
+        }
+
+        if (ValidadorCpfCnpj.validarCnpj(identificador) == null) {
+            return buscarInvestidorEmpresa(identificador);
+        }
+
+        return null;
     }
 }

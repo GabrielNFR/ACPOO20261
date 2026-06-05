@@ -1,11 +1,11 @@
 package br.edu.cs.poo.ac.bolsa.entidade;
 
+import br.edu.cs.poo.ac.bolsa.util.Registro;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
-import java.io.Serializable;
 
-public class Investidor implements Serializable {
+public abstract class Investidor extends Registro {
 
     private String nome;
     private Endereco endereco;
@@ -85,4 +85,6 @@ public class Investidor implements Serializable {
     public BigDecimal getBonus() {
         return bonus;
     }
+
+    public abstract BigDecimal getEntradaFinanceira();
 }

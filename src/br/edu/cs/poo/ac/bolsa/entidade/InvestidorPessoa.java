@@ -13,7 +13,7 @@ public class InvestidorPessoa extends Investidor implements Comparavel {
 
     public InvestidorPessoa(){}
     
-    public InvestidorPessoa(String nome, Contatos contatos, LocalDate dataNascimento, BigDecimal bonus, Endereco endereco, String cpf, double renda, FaixaRenda faixaRenda)
+    public InvestidorPessoa(String nome, Endereco endereco, LocalDate dataNascimento, BigDecimal bonus, Contatos contatos, String cpf, double renda, FaixaRenda faixaRenda)
     {
         super(nome, contatos, dataNascimento, bonus, endereco);
         this.cpf = cpf;
@@ -62,5 +62,13 @@ public class InvestidorPessoa extends Investidor implements Comparavel {
 
     public void setFaixaRenda(FaixaRenda faixaRenda) {
         this.faixaRenda = faixaRenda;
+    }
+
+    public String getIdentificador() {
+        return getCpf();
+    }
+
+    public BigDecimal getEntradaFinanceira() {
+        return BigDecimal.valueOf(renda);
     }
 }

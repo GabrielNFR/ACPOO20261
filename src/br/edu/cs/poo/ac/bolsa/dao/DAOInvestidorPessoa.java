@@ -52,4 +52,8 @@ public class DAOInvestidorPessoa extends DAOGenerico{
 		}
 		return lista;
 	}
+
+	public InvestidorPessoa buscarInvestidorPessoa(String cpf) {
+    return buscar(cpf);
+}
 }

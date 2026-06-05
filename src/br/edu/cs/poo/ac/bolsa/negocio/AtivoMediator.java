@@ -9,7 +9,7 @@ public class AtivoMediator {
     
     private static AtivoMediator instancia = new AtivoMediator();
 
-    private AtivoMediator() { }
+    public AtivoMediator() { }
 
     public static AtivoMediator getInstancia() {
         return instancia;

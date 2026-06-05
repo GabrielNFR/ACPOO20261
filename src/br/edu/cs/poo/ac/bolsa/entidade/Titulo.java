@@ -4,11 +4,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.io.Serializable;
+import br.edu.cs.poo.ac.bolsa.util.Registro;
 
-public class Titulo implements Serializable {
-    private InvestidorPessoa investidorPessoa;
-    private InvestidorEmpresa investidorEmpresa;
+public class Titulo extends Registro {
+    private Investidor investidor;
     private Ativo ativo;
     private BigDecimal valorInvestido;
     private BigDecimal valorAtual;
@@ -20,11 +19,10 @@ public class Titulo implements Serializable {
 
     public Titulo(){}
     
-    public Titulo(InvestidorPessoa investidorPessoa, InvestidorEmpresa investidorEmpresa, Ativo ativo, BigDecimal valorInvestido, BigDecimal valorAtual, BigDecimal taxaDiaria, 
+    public Titulo(Investidor investidor, Ativo ativo, BigDecimal valorInvestido, BigDecimal valorAtual, BigDecimal taxaDiaria, 
         LocalDate dataAplicacao, LocalDate dataVencimento, LocalDate dataUltimoRendimento, StatusTitulo status)
     {
-        this.investidorPessoa = investidorPessoa;
-        this.investidorEmpresa = investidorEmpresa;
+        this.investidor = investidor;
         this.ativo = ativo;
         this.valorInvestido = valorInvestido;
         this.valorAtual = valorAtual;
@@ -78,19 +76,16 @@ public class Titulo implements Serializable {
         DateTimeFormatter formatador = DateTimeFormatter.ofPattern("yyyyMMdd");
         String dataFormatada = this.dataAplicacao.format(formatador);
         
-        if (this.investidorPessoa != null) {
-            return "000" + this.investidorPessoa.getCpf() + this.ativo.getCodigo() + dataFormatada + "0000";
-        } else if (this.investidorEmpresa != null) {
-            return this.investidorEmpresa.getCnpj() + this.ativo.getCodigo() + dataFormatada + "0000";
+        if (this.investidor instanceof InvestidorPessoa) {
+            return "000" + this.investidor.getIdentificador() + this.ativo.getCodigo() + dataFormatada + "0000";
+        } else if (this.investidor instanceof InvestidorEmpresa) {
+            return this.investidor.getIdentificador() + this.ativo.getCodigo() + dataFormatada + "0000";
         }
         return null;
     }
 
-    public InvestidorPessoa getInvestidorPessoa() { return investidorPessoa; }
-    public void setInvestidorPessoa(InvestidorPessoa investidorPessoa) { this.investidorPessoa = investidorPessoa; }
-
-    public InvestidorEmpresa getInvestidorEmpresa() { return investidorEmpresa; }
-    public void setInvestidorEmpresa(InvestidorEmpresa investidorEmpresa) { this.investidorEmpresa = investidorEmpresa; }
+    public Investidor getInvestidor() { return investidor; }
+    public void setInvestidor(Investidor investidor) { this.investidor = investidor; }
 
     public Ativo getAtivo() { return ativo; }
     public void setAtivo(Ativo ativo) { this.ativo = ativo; }
@@ -115,4 +110,8 @@ public class Titulo implements Serializable {
 
     public StatusTitulo getStatus() { return status; }
     public void setStatus(StatusTitulo status) { this.status = status; }
+
+    public String getIdentificador() {
+        return getNumero();
+    }
 }

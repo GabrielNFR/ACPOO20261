@@ -9,7 +9,7 @@ public class InvestidorEmpresa extends Investidor {
 
     public InvestidorEmpresa(){}
    
-    public InvestidorEmpresa(String nome, Contatos contatos, LocalDate dataAbertura, BigDecimal bonus, Endereco endereco, String cnpj, double faturamento)
+    public InvestidorEmpresa(String nome, Endereco endereco, LocalDate dataAbertura, BigDecimal bonus, Contatos contatos, String cnpj, double faturamento)
     {
         super(nome, contatos, dataAbertura, bonus, endereco);
         this.cnpj = cnpj;
@@ -40,5 +40,13 @@ public class InvestidorEmpresa extends Investidor {
 
     public void setFaturamento(double faturamento) {
         this.faturamento = faturamento;
+    }
+
+    public String getIdentificador() {
+        return getCnpj();
+    }
+
+    public BigDecimal getEntradaFinanceira() {
+        return BigDecimal.valueOf(faturamento);
     }
 }
